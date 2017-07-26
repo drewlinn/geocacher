@@ -26,6 +26,6 @@
   <p>Geocache Longitude: {{foundGeocache.longitude}}</p>
   <p>Geocache Location Type: {{foundGeocache.locationType}}</p>
 </div>
-<div *ngIf="noResult">
+<div *ngIf="noResult === true">
   <h3>Either your search parameters were not entered correctly, or there is no Geocache present at the requested location.</h3>
 </div>
