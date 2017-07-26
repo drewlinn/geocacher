@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { GeocacheFormComponent } from './geocache-form/geocache-form.component';
+import { LocateGeocacheService } from './locate-geocache.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { GeocacheFormComponent } from './geocache-form/geocache-form.component';
     HttpModule,
     routing
   ],
-  providers: [],
+  providers: [LocateGeocacheService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

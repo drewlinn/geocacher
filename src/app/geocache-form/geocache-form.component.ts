@@ -18,8 +18,7 @@ export class GeocacheFormComponent implements OnInit {
   }
   getGeocacheByLatLon(latitude: string, longitude: string) {
     this.noResult = false;
-    this.locateGeocache.findGeocacheByLatLon(latitude, longitude)
-    this.resultGeocache = this.locateGeocache.getResult();
+    this.locateGeocache.findGeocacheByLatLon(latitude, longitude);
     if (this.resultGeocache != null) {
       this.noResult = true;
     }
@@ -27,7 +26,6 @@ export class GeocacheFormComponent implements OnInit {
   getGeocacheByAddress(address: string) {
     this.noResult = false;
     this.locateGeocache.findGeocacheByAddress(address);
-    this.resultGeocache = this.locateGeocache.getResult();
     if (this.resultGeocache != null) {
       this.noResult = true;
     }

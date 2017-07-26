@@ -6,7 +6,7 @@ import { Geocache } from './geocache.model';
 
 @Injectable()
 export class LocateGeocacheService {
-  foundGeocache: Geocache;
+foundGeocache: Geocache;
   constructor(private http: Http) { }
 
   findGeocacheByLatLon(latitude: string, longitude: string) {
@@ -14,8 +14,7 @@ export class LocateGeocacheService {
       let foundGeocache: Geocache;
       for(let result of response.json().results) {
         foundGeocache = new Geocache(result.formatted_address, latitude, longitude, result.geometry.location_type);
-        this.getResult();
-        console.log(foundGeocache);
+        return foundGeocache;
       }
     });
   }
@@ -24,14 +23,9 @@ export class LocateGeocacheService {
     return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +address+ '&key=' +geoKey).subscribe(response => {
       let foundGeocache: Geocache;
       for(let result of response.json().results) {
-        foundGeocache = new Geocache(address, result.geometry.location.lat, result.geometry.location.lng, result.geometry.location_type);
-        this.getResult();
-        console.log(foundGeocache);
+        this.foundGeocache = new Geocache(address, result.geometry.location.lat, result.geometry.location.lng, result.geometry.location_type);
+        return this.foundGeocache;
       }
     });
-  }
-
-  getResult() {
-    return this.foundGeocache;
   }
 }
