@@ -5,8 +5,7 @@
 #### By **Andrew Dalton**
 
 ## Description
-  *
-
+  * This application is designed to help the user locate nearby (or distant) geocaches by using either their physical address or its latitude and longitude.
 
 ## Planning
 
@@ -22,7 +21,8 @@
 
   | Behavior | Input | Output |
   | :--------| :---- | :------|
-  | User can enter the latitude and longitude of a geocache and receive the corresponding physical address | "40.714224", "-73.961452" | "277 Bedford Avenue, NY, 11211, United States"
+  | User can enter the latitude and longitude of a geocache and receive the corresponding physical address | "40.714224", "-73.961452" | "277 Bedford Avenue, NY, 11211, United States" |
+  | User can enter a physical address and receive the corresponding latitude and longitude | "277 Bedford Avenue, NY, 11211, United States" | "40.714224", "-73.961452" |
 
 3. Integration
   * index.html, welcome.component, app.component, app.module, and app.routing for application entry, navigation, and integration.
@@ -41,21 +41,13 @@
 * Write in your console the command "git clone" and paste the project address afterward and press enter.
 * Use your console to navigate to the project directory and perform 'npm install' and 'bower install' commands
 * Create a file called 'api-keys.ts' in the 'src/app' folder of the project directory.
-* Open your browser and navigate to https://console.firebase.google.com/ in your web browser.
-* If necessary, create an account.
-* In the dashboard area, click on the 'Create a New Project' option; provide it with a name and select your Country/Region from the drop-down menu.
-* You will then be directed to an Overview area. Select the 'Add Firebase to your web app' option.
-* In the window that pops up, Copy everything nested in the 'var config' code block and paste it into your 'api-keys.ts file; change the declaration from 'var config' to 'export var masterFirebaseConfig'. Like so:
-  **export var masterFirebaseConfig = {
-    apiKey: "YOUR-API-KEY-GOES-HERE",
-    authDomain: "xxxx.firebaseapp.com",
-    databaseURL: "https://xxxx.firebaseio.com",
-    storageBucket: "xxxx.appspot.com",
-    messagingSenderId: "xxxx"
-  };**
-* Make sure to save the new file.
-* Return to the Firebase Console and select your project. Click on the Database option in the side Navbar.
-* Near the top of the page on the blue navbar, select the option that reads RULES; change both the ".read" and ".write" properties from "auth !== null" to "true".
+* Open your browser and navigate to https://developers.google.com/maps/documentation/geocoding/start in your web browser.
+* Login with Google credentials. If necessary, create an account.
+* in the window, select the 'Create a New Project' option; provide it with a name (geocacher).
+* You should then receive an api-key. Copy that and paste it into your 'api-keys.ts' file in quotations, preceded by 'export var geoKey:', like so:
+  export var geoKey: "{YOUR-API-KEY-GOES-HERE}";
+
+* Make sure to save the file.
 * In your console (make sure you are still in the project directory), perform the commands 'ng build' followed by 'ng serve'
 * In your Web Browser, navigate to 'localhost:4200'
 * The application should successfully be displayed with full functionality.
@@ -101,11 +93,9 @@ If you notice any issues with my program or bugs with my code, please contact me
   * Typescript
   * Angular2
   * CSS
-  * SCSS
   * Bootstrap
   * Node Package Manager
   * Bower
-  * Firebase
 
 ### License
 
