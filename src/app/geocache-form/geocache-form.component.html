@@ -8,7 +8,7 @@
     <br>
     <input #longitude>
   </div>
-  <button (click)="getGeocacheByLatLon(latitude.value, longitude.value)">Get Geocache</button>
+  <button (click)="getGeocacheByLatLon(latitude.value, longitude.value); latitude.value=''; longitude.value=''">Get Geocache</button>
 </form>
 
 <form id="address">
@@ -16,12 +16,16 @@
     <label>Enter Address</label>
     <br>
     <input #address>
-    <button (click)="getGeocacheByAddress(address.value)">Get Geocache</button>
+    <button (click)="getGeocacheByAddress(address.value); address.value=''">Get Geocache</button>
   </div>
 </form>
 
-<div>
-  <ul id="result">
-
-  </ul>
+<div *ngIf="resultGeocache != null">
+  <p>Geocache Address: {{resultGeocache.address}}</p>
+  <p>Geocache Latitude: {{resultGeocache.latitude}}</p>
+  <p>Geocache Longitude: {{resultGeocache.longitude}}</p>
+  <p>Geocache Location Type: {{resultGeocache.locationType}}</p>
+</div>
+<div *ngIf="noResult">
+  <h3>Either your search parameters were not entered correctly, or there is no Geocache present at the requested location.</h3>
 </div>
