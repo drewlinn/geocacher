@@ -1,3 +1,27 @@
-<p>
-  geocache-form works!
-</p>
+<h1>Search for a Geocache</h1>
+<form id="lat-lon">
+  <div class="form-group">
+    <label>Enter Latitude</label>
+    <br>
+    <input #latitude>
+    <label>Enter Longitude</label>
+    <br>
+    <input #longitude>
+  </div>
+  <button (click)="getGeocacheByLatLon(latitude.value, longitude.value)">Get Geocache</button>
+</form>
+
+<form id="address">
+  <div class="form-group">
+    <label>Enter Address</label>
+    <br>
+    <input #address>
+    <button (click)="getGeocacheByAddress(address.value)">Get Geocache</button>
+  </div>
+</form>
+
+<div>
+  <ul id="result">
+
+  </ul>
+</div>
