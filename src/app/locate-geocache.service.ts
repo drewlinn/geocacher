@@ -10,22 +10,10 @@ foundGeocache: Geocache;
   constructor(private http: Http) { }
 
   findGeocacheByLatLon(latitude: string, longitude: string) {
-    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' +latitude+ ',' +longitude+ '&key=' +geoKey).subscribe(response => {
-      let foundGeocache: Geocache;
-      for(let result of response.json().results) {
-        foundGeocache = new Geocache(result.formatted_address, latitude, longitude, result.geometry.location_type);
-        return foundGeocache;
-      }
-    });
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' +latitude+ ',' +longitude+ '&key=' +geoKey)
   }
 
   findGeocacheByAddress(address: string) {
-    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +address+ '&key=' +geoKey).subscribe(response => {
-      let foundGeocache: Geocache;
-      for(let result of response.json().results) {
-        this.foundGeocache = new Geocache(address, result.geometry.location.lat, result.geometry.location.lng, result.geometry.location_type);
-        return this.foundGeocache;
-      }
-    });
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +address+ '&key=' +geoKey)
   }
 }

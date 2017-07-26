@@ -20,11 +20,11 @@
   </div>
 </form>
 
-<div *ngIf="resultGeocache != null">
-  <p>Geocache Address: {{resultGeocache.address}}</p>
-  <p>Geocache Latitude: {{resultGeocache.latitude}}</p>
-  <p>Geocache Longitude: {{resultGeocache.longitude}}</p>
-  <p>Geocache Location Type: {{resultGeocache.locationType}}</p>
+<div *ngIf="foundGeocache != null">
+  <p>Geocache Address: {{foundGeocache.address}}</p>
+  <p>Geocache Latitude: {{foundGeocache.latitude}}</p>
+  <p>Geocache Longitude: {{foundGeocache.longitude}}</p>
+  <p>Geocache Location Type: {{foundGeocache.locationType}}</p>
 </div>
 <div *ngIf="noResult">
   <h3>Either your search parameters were not entered correctly, or there is no Geocache present at the requested location.</h3>

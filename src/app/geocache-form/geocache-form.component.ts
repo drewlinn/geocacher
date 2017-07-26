@@ -10,25 +10,35 @@ import { Geocache } from '../geocache.model';
   providers: [ LocateGeocacheService ]
 })
 export class GeocacheFormComponent implements OnInit {
-  resultGeocache: Geocache = null;
+  foundGeocache: Geocache = null;
   noResult: boolean = false;
   constructor(private locateGeocache: LocateGeocacheService) { }
 
   ngOnInit() {
   }
+
   getGeocacheByLatLon(latitude: string, longitude: string) {
     this.noResult = false;
-    this.locateGeocache.findGeocacheByLatLon(latitude, longitude);
-    if (this.resultGeocache != null) {
-      this.noResult = true;
-    }
+    this.locateGeocache.findGeocacheByLatLon(latitude, longitude).subscribe(response => {
+      for(let result of response.json().results) {
+        this.foundGeocache = new Geocache(result.formatted_address, latitude, longitude, result.geometry.location_type);
+        if (this.foundGeocache === null) {
+          this.noResult = true;
+        }
+      }
+    });
   }
+
   getGeocacheByAddress(address: string) {
     this.noResult = false;
-    this.locateGeocache.findGeocacheByAddress(address);
-    if (this.resultGeocache != null) {
-      this.noResult = true;
-    }
+    this.locateGeocache.findGeocacheByAddress(address).subscribe(response => {
+      for(let result of response.json().results) {
+        this.foundGeocache = new Geocache(address, result.geometry.location.lat, result.geometry.location.lng, result.geometry.location_type);
+        if (this.foundGeocache === null) {
+          this.noResult = true;
+        }
+      }
+    });
   }
 
 }
